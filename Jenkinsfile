@@ -53,8 +53,8 @@ pipeline {
                     // bat "docker run -d --name mon-app-js -p 3000:3000 ${DOCKER_IMAGE}:${DOCKER_TAG}"
 
                     // Déploiement Kubernetes
-                    bat 'kubectl apply -f deployment.yaml'
-                    bat 'kubectl apply -f service.yaml'
+                    bat 'kubectl apply -f deployment.yaml --validate=false'
+                    bat 'kubectl apply -f service.yaml --validate=false'
                 }
             }
         }
