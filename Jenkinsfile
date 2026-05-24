@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'TON_USERNAME/mon-app-js'
+        DOCKER_IMAGE = 'immaa11/mon-app-js'
         DOCKER_TAG = "${BUILD_NUMBER}"
     }
 
