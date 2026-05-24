@@ -47,11 +47,14 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    // Docker deploy (remplacé par Kubernetes en partie 4)
-                    // bat 'docker run -d -p 3000:3000 %DOCKER_IMAGE%:%DOCKER_TAG%'
-                    bat 'docker stop mon-app-js & exit 0'
-                    bat 'docker rm mon-app-js & exit 0'
-                    bat "docker run -d --name mon-app-js -p 3000:3000 ${DOCKER_IMAGE}:${DOCKER_TAG}"
+                    // Ancien déploiement Docker (remplacé par Kubernetes)
+                    // bat 'docker stop mon-app-js & exit 0'
+                    // bat 'docker rm mon-app-js & exit 0'
+                    // bat "docker run -d --name mon-app-js -p 3000:3000 ${DOCKER_IMAGE}:${DOCKER_TAG}"
+
+                    // Déploiement Kubernetes
+                    bat 'kubectl apply -f deployment.yaml'
+                    bat 'kubectl apply -f service.yaml'
                 }
             }
         }
